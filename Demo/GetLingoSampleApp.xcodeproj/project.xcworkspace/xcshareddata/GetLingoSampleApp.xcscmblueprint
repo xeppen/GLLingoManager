@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4D847B2EF9AF5B5007BA156E16B62814A10A5B6B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "43ED17C06E8EB200B4CD0C6BC01447CAB7717120" : 0,
+    "4D847B2EF9AF5B5007BA156E16B62814A10A5B6B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "17512C55-2CE0-46EA-BEEA-06DE4DEBBED3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "43ED17C06E8EB200B4CD0C6BC01447CAB7717120" : "..",
+    "4D847B2EF9AF5B5007BA156E16B62814A10A5B6B" : "GetLingo\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GetLingoSampleApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Demo\/GetLingoSampleApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/sebastian_ljungberg\/getlingosampleapp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "43ED17C06E8EB200B4CD0C6BC01447CAB7717120"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/xeppen\/GLLingoManager.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4D847B2EF9AF5B5007BA156E16B62814A10A5B6B"
+    }
+  ]
+}

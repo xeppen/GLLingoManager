@@ -1,0 +1,218 @@
+{
+    "app": {
+        "id": 2,
+        "name": "Parking Help",
+        "created_at": "2016-02-02T22:09:12.493Z",
+        "updated_at": "2016-02-02T22:09:12.493Z",
+        "screens": [
+                    {
+                    "id": 4,
+                    "name": "Parking Restricted screen",
+                    "created_at": "2016-02-07T19:42:33.167Z",
+                    "updated_at": "2016-02-07T20:37:18.598Z",
+                    "localized_strings": [
+                                          {
+                                          "id": 3,
+                                          "key": "parking_verdict_allowed",
+                                          "value": "Parkering tillåten",
+                                          "table_name": "",
+                                          "bundle": "",
+                                          "created_at": "2016-02-07T19:43:26.528Z",
+                                          "updated_at": "2016-02-07T19:43:26.528Z",
+                                          "app_id": 2,
+                                          "translations": [
+                                                           {
+                                                           "id": 3,
+                                                           "value": "Parkering tillåten",
+                                                           "created_at": "2016-02-16T16:39:23.269Z",
+                                                           "updated_at": "2016-02-16T16:39:23.269Z",
+                                                           "language_id": 1,
+                                                           "language": {
+                                                           "id": 1,
+                                                           "name": "Swedish",
+                                                           "language_code": "sv"
+                                                           }
+                                                           },
+                                                           {
+                                                           "id": 4,
+                                                           "value": "Parkering tilladt",
+                                                           "created_at": "2016-02-16T16:40:02.178Z",
+                                                           "updated_at": "2016-02-16T16:40:02.178Z",
+                                                           "language_id": 3,
+                                                           "language": {
+                                                           "id": 3,
+                                                           "name": "Danish",
+                                                           "language_code": "da"
+                                                           }
+                                                           }
+                                                           ]
+                                          },
+                                          {
+                                          "id": 4,
+                                          "key": "parking_verdict_recidence_living",
+                                          "value": "Boendeparkering",
+                                          "table_name": "",
+                                          "bundle": "",
+                                          "created_at": "2016-02-07T20:19:14.463Z",
+                                          "updated_at": "2016-02-07T20:19:14.463Z",
+                                          "app_id": 2,
+                                          "translations": [
+                                                           {
+                                                           "id": 5,
+                                                           "value": "Boendeparkering",
+                                                           "created_at": "2016-02-16T18:59:44.207Z",
+                                                           "updated_at": "2016-02-16T18:59:44.207Z",
+                                                           "language_id": 1,
+                                                           "language": {
+                                                           "id": 1,
+                                                           "name": "Swedish",
+                                                           "language_code": "sv"
+                                                           }
+                                                           }
+                                                           ]
+                                          },
+                                          {
+                                          "id": 5,
+                                          "key": "create_reminder",
+                                          "value": "Skapa påminnelse",
+                                          "table_name": "",
+                                          "bundle": "",
+                                          "created_at": "2016-02-07T20:19:31.657Z",
+                                          "updated_at": "2016-02-07T20:19:31.657Z",
+                                          "app_id": 2,
+                                          "translations": [
+                                                           {
+                                                           "id": 6,
+                                                           "value": "Skapa påminnelse",
+                                                           "created_at": "2016-02-16T19:01:20.518Z",
+                                                           "updated_at": "2016-02-16T19:01:20.518Z",
+                                                           "language_id": 1,
+                                                           "language": {
+                                                           "id": 1,
+                                                           "name": "Swedish",
+                                                           "language_code": "sv"
+                                                           }
+                                                           }
+                                                           ]
+                                          }
+                                          ]
+                    },
+                    {
+                    "id": 5,
+                    "name": "Parking Restricted screen",
+                    "created_at": "2016-02-07T20:37:02.263Z",
+                    "updated_at": "2016-02-07T20:37:31.604Z",
+                    "localized_strings": [
+                                          {
+                                          "id": 6,
+                                          "key": "change_adress_enter_new_address",
+                                          "value": "Ange ny adress",
+                                          "table_name": "",
+                                          "bundle": "",
+                                          "created_at": "2016-02-07T20:41:49.947Z",
+                                          "updated_at": "2016-02-07T20:41:49.947Z",
+                                          "app_id": 2,
+                                          "translations": []
+                                          }
+                                          ]
+                    }
+                    ],
+        "localized_strings": [
+                              {
+                              "id": 3,
+                              "key": "parking_verdict_allowed",
+                              "value": "Parkering tillåten",
+                              "table_name": "",
+                              "bundle": "",
+                              "created_at": "2016-02-07T19:43:26.528Z",
+                              "updated_at": "2016-02-07T19:43:26.528Z",
+                              "app_id": 2,
+                              "translations": [
+                                               {
+                                               "id": 3,
+                                               "value": "Parkering tillåten",
+                                               "created_at": "2016-02-16T16:39:23.269Z",
+                                               "updated_at": "2016-02-16T16:39:23.269Z",
+                                               "language_id": 1,
+                                               "language": {
+                                               "id": 1,
+                                               "name": "Swedish",
+                                               "language_code": "sv"
+                                               }
+                                               },
+                                               {
+                                               "id": 4,
+                                               "value": "Parkering tilladt",
+                                               "created_at": "2016-02-16T16:40:02.178Z",
+                                               "updated_at": "2016-02-16T16:40:02.178Z",
+                                               "language_id": 3,
+                                               "language": {
+                                               "id": 3,
+                                               "name": "Danish",
+                                               "language_code": "da"
+                                               }
+                                               }
+                                               ]
+                              },
+                              {
+                              "id": 4,
+                              "key": "parking_verdict_recidence_living",
+                              "value": "Boendeparkering",
+                              "table_name": "",
+                              "bundle": "",
+                              "created_at": "2016-02-07T20:19:14.463Z",
+                              "updated_at": "2016-02-07T20:19:14.463Z",
+                              "app_id": 2,
+                              "translations": [
+                                               {
+                                               "id": 5,
+                                               "value": "Boendeparkering",
+                                               "created_at": "2016-02-16T18:59:44.207Z",
+                                               "updated_at": "2016-02-16T18:59:44.207Z",
+                                               "language_id": 1,
+                                               "language": {
+                                               "id": 1,
+                                               "name": "Swedish",
+                                               "language_code": "sv"
+                                               }
+                                               }
+                                               ]
+                              },
+                              {
+                              "id": 5,
+                              "key": "create_reminder",
+                              "value": "Skapa påminnelse",
+                              "table_name": "",
+                              "bundle": "",
+                              "created_at": "2016-02-07T20:19:31.657Z",
+                              "updated_at": "2016-02-07T20:19:31.657Z",
+                              "app_id": 2,
+                              "translations": [
+                                               {
+                                               "id": 6,
+                                               "value": "Skapa påminnelse",
+                                               "created_at": "2016-02-16T19:01:20.518Z",
+                                               "updated_at": "2016-02-16T19:01:20.518Z",
+                                               "language_id": 1,
+                                               "language": {
+                                               "id": 1,
+                                               "name": "Swedish",
+                                               "language_code": "sv"
+                                               }
+                                               }
+                                               ]
+                              },
+                              {
+                              "id": 6,
+                              "key": "change_adress_enter_new_address",
+                              "value": "Ange ny adress",
+                              "table_name": "",
+                              "bundle": "",
+                              "created_at": "2016-02-07T20:41:49.947Z",
+                              "updated_at": "2016-02-07T20:41:49.947Z",
+                              "app_id": 2,
+                              "translations": []
+                              }
+                              ]
+    }
+}
