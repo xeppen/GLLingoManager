@@ -19,8 +19,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.testLabel1.text = GLLocalizationString(@"PARKING_RULE_PARKING_VERDICT_ALLOWED", @"Default parkering tillåten");
-    self.testLabel2.text = GLLocalizationString(@"PARKING_RULE_PARKING_VERDICT_RESTRICTED", @"Error key");
+    self.apiLabel1.text = GLLocalizationString(@"SAMPLE_APP_DATE", @"December, 2015");
+    self.apiLabel2.text = [NSString stringWithFormat:GLLocalizationString(@"SAMPLE_APP_DEEDS", @"%i deeds completed"), 4];
+    self.apiLabel3.text = GLLocalizationString(@"SAMPLE_APP_REACH_GOLD", @"You're on course to reach your goal for this month.");
+    self.apiLabel4.text = GLLocalizationString(@"SAMPLE_APP_HIGH_FIVE", @"Error key");
+    self.apiLabel5.text = GLLocalizationString(@"SAMPLE_APP_LOCAL_STRING", @"Using local string file since ");
+    self.apiLabel6.text = GLLocalizationString(@"SAMPLE_APP_UNKNOWN_KEY", @"This is an example when there are no key and default value is used.");
 }
 
 - (void)didReceiveMemoryWarning {

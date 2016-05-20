@@ -60,11 +60,13 @@
         return translationObject.value;
     }
     
-    if(defaultString){
-        return defaultString;
-    }
+    NSString *returnString = NSLocalizedString(key, nil);
+    if(![returnString isEqualToString:key])
+        return returnString;
     
-    return NSLocalizedString(key, nil);
+    if(defaultString)
+        return defaultString;
+    return @"";
 }
 
 -(void) fetch

@@ -10,8 +10,12 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UILabel *testLabel1;
-@property (nonatomic, strong) IBOutlet UILabel *testLabel2;
+@property (nonatomic, strong) IBOutlet UILabel *apiLabel1;
+@property (nonatomic, strong) IBOutlet UILabel *apiLabel2;
+@property (nonatomic, strong) IBOutlet UILabel *apiLabel3;
+@property (nonatomic, strong) IBOutlet UILabel *apiLabel4;
+@property (nonatomic, strong) IBOutlet UILabel *apiLabel5;
+@property (nonatomic, strong) IBOutlet UILabel *apiLabel6;
 
 @end
 
