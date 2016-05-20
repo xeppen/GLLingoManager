@@ -36,6 +36,7 @@ Then you need to instantiate the singelton and set api key and app id. You can a
 ```
 
 ## Changelog
+* 0.2.0 Updated demo app and minor priority changes in GLLingoManager
 * 0.1.0 Initial release with basic functionality
 
 ## License
