@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[GLLingoManager sharedManager] setApiKey:@"NCWtxzUjboyrH1nxi2C_" andAppId:@"2" andPreferedLanguage:nil];
+    [[GLLingoManager sharedManager] setApiKey:@"GwnZUbZeNgMzi5KgxrgV" andAppId:@"10" andPreferedLanguage:nil];
     
     return YES;
 }

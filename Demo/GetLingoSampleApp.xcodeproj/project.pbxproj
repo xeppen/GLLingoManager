@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A2BA57E1C97590F00F4FDB5 /* GLLingoManager_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2BA57D1C97590F00F4FDB5 /* GLLingoManager_Tests.m */; };
+		3A8A86141CEE64CA00D27405 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A8A86161CEE64CA00D27405 /* Localizable.strings */; };
 		3A9DC86B1CD24859006988B3 /* GLStringObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9DC86A1CD24859006988B3 /* GLStringObjectTests.m */; };
 		3AD13EA81CB05D8000822D15 /* sampleFetchTranslationsSV.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD13EA71CB05D8000822D15 /* sampleFetchTranslationsSV.json */; };
 		3AE191941C72831F001DEA8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191931C72831F001DEA8E /* main.m */; };
@@ -38,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		3A2BA57D1C97590F00F4FDB5 /* GLLingoManager_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLingoManager_Tests.m; sourceTree = "<group>"; };
+		3A8A86151CEE64CA00D27405 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3A8A86171CEE64D100D27405 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3A8A86181CEE69AF00D27405 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A9DC86A1CD24859006988B3 /* GLStringObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLStringObjectTests.m; sourceTree = "<group>"; };
 		3AD13EA71CB05D8000822D15 /* sampleFetchTranslationsSV.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFetchTranslationsSV.json; sourceTree = "<group>"; };
 		3AE1918F1C72831F001DEA8E /* GetLingoSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetLingoSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +140,7 @@
 		3AE191921C72831F001DEA8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A8A86161CEE64CA00D27405 /* Localizable.strings */,
 				3AE191931C72831F001DEA8E /* main.m */,
 				3AE191C41C7291EA001DEA8E /* GetLingoSampleApp.pch */,
 			);
@@ -284,6 +289,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = 3AE191861C72831F001DEA8E;
 			productRefGroup = 3AE191901C72831F001DEA8E /* Products */;
@@ -302,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AE191A51C72831F001DEA8E /* LaunchScreen.storyboard in Resources */,
+				3A8A86141CEE64CA00D27405 /* Localizable.strings in Resources */,
 				3AE191A21C72831F001DEA8E /* Assets.xcassets in Resources */,
 				3AE1919D1C72831F001DEA8E /* Main.storyboard in Resources */,
 			);
@@ -403,6 +410,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3A8A86161CEE64CA00D27405 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A8A86151CEE64CA00D27405 /* en */,
+				3A8A86171CEE64D100D27405 /* sv */,
+				3A8A86181CEE69AF00D27405 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		3AE1919B1C72831F001DEA8E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

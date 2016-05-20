@@ -1,0 +1,9 @@
+/* 
+  Localization.strings
+  GetLingoSampleApp
+
+  Created by Sebastian Ljungberg on 19/05/16.
+  Copyright © 2016 Xeppen Productions. All rights reserved.
+*/
+
+"SAMPLE_APP_LOCAL_STRING"              = "Exempel när lokala sträng fil används eftersom ingen giltig nyckel hittades i tjänsten.";

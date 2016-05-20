@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "This is an example when there are no key and default value is used."; ObjectID = "6dp-UZ-eOK"; */
+"6dp-UZ-eOK.text" = "This is an example when there are no key and default value is used.";
+
+/* Class = "UILabel"; text = "4 deeds completed"; ObjectID = "7vq-be-gxn"; */
+"7vq-be-gxn.text" = "4 deeds completed";
+
+/* Class = "UILabel"; text = "You're on course to reach your goal for this month."; ObjectID = "COy-ii-QnJ"; */
+"COy-ii-QnJ.text" = "You're on course to reach your goal for this month.";
+
+/* Class = "UILabel"; text = "A big high five to you!"; ObjectID = "UBp-Zs-Gih"; */
+"UBp-Zs-Gih.text" = "A big high five to you!";
+
+/* Class = "UILabel"; text = "December, 2015"; ObjectID = "W2v-T0-VjB"; */
+"W2v-T0-VjB.text" = "December, 2015";
+
+/* Class = "UILabel"; text = "Example when local string file is used because no valid key was found in the service."; ObjectID = "pNb-NF-e45"; */
+"pNb-NF-e45.text" = "Example when local string file is used because no valid key was found in the service.";
