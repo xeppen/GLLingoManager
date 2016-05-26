@@ -1,0 +1,9 @@
+target 'GetLingoSampleApp' do
+
+end
+
+target 'GetLingoSampleAppTests' do
+
+pod 'OCMock', '~>3.1.5'
+
+end

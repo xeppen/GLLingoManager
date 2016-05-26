@@ -26,46 +26,6 @@
     [super tearDown];
 }
 
-- (void) testSampleFetchOfStrings {
-    XCTestExpectation *fetchCompletionExpectation =
-    [self expectationWithDescription:@"Successfully fetched parking rules!"];
-    
-    // Mock Session
-    // Creates an NSURLSession instance that shall be used in the service.
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    id myMockedURLSession = OCMPartialMock(session);
-    
-    OCMStub([myMockedURLSession dataTaskWithRequest:[OCMArg any] completionHandler:[OCMArg any]]).andDo(^(NSInvocation *invocation){
-        
-        __block void (^completion)(NSData *data, NSURLResponse *response, NSError *error);
-        
-        // Get second argument
-        [invocation getArgument:&completion atIndex:3];
-        NSData *testData = GetFileData(@"sampleFetchOfStrings", @"json");
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            completion(testData, nil, nil);
-        });
-    });
-    
-    // Mock class
-    // Mocking the class to return our mocked session to be returned in our static method in the service.
-    id myMockedSessionClass = OCMClassMock([NSURLSession class]);
-    
-    OCMStub([myMockedSessionClass sessionWithConfiguration: [OCMArg any]]).andReturn(myMockedURLSession);
-    
-    [GLNetworkService fetchStringsForAppKey:@"" withCompletion:^(NSDictionary *stringDictionary, NSError *error) {
-        if(stringDictionary.count == 4){
-            [fetchCompletionExpectation fulfill];
-        }
-    }];
-    
-    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
-        // Stop mocking
-        [myMockedSessionClass stopMocking];
-    }];
-}
-
 - (void) testSampleFetchOfTranslations {
     XCTestExpectation *fetchCompletionExpectation =
     [self expectationWithDescription:@"Successfully fetched translations!"];
@@ -94,7 +54,7 @@
     
     OCMStub([myMockedSessionClass sessionWithConfiguration: [OCMArg any]]).andReturn(myMockedURLSession);
     
-    [GLNetworkService fetchStringsForLanguageCode:@"sv" withAppKey:@"" withCompletion:^(NSDictionary *stringDictionary, NSError *error) {
+    [GLNetworkService fetchStringsForLanguageCode:@"sv" withAppKey:@"" withAppId:@"" withCompletion:^(NSDictionary *stringDictionary, NSError *error) {
         if(stringDictionary.count == 13){
             [fetchCompletionExpectation fulfill];
         }
