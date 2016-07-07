@@ -31,33 +31,26 @@
                                          @"name": @"English",
                                          @"language_code": @"en"
                                          };
+    NSDictionary *localizedStringDictionary = @{
+                                         @"id": @81,
+                                         @"key": @"SAMPLE_APP_DATE",
+                                         @"value": @"December, 2015"
+                                         };
+    
     NSDictionary *testDictionary = @{
-        @"id": @33,
-        @"value": @"Parking allowed",
-        @"created_at": @"2016-04-02T19:49:40.682Z",
-        @"updated_at": @"2016-04-02T19:49:40.682Z",
-        @"language_id": @4,
-        @"language": languageDictionary,
-        @"localized_string": @{
-            @"id": @7,
-            @"key": @"PARKING_RULE_PARKING_VERDICT_ALLOWED"
-        }
+        @"id": @73,
+        @"value": @"December, 2015",
+        @"localized_string": localizedStringDictionary,
+        @"language": languageDictionary
     };
     
-    GLStringObject *testObject = [[GLStringObject alloc] init];
-    testObject.dictionary = testDictionary;
+    GLStringObject *testObject = [[GLStringObject alloc] initWithDictionary:testDictionary];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *testCreatedString = @"2016-04-02";
-    
-    [testCreatedString isEqualToString:[formatter stringFromDate:testObject.createdAt]] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
-    [testCreatedString isEqualToString:[formatter stringFromDate:testObject.updatedAt]] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
-    [testObject.id isEqualToNumber:@33] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
+    [testObject.id isEqualToNumber:@73] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
     [testObject.languageCode isEqualToString:@"en"] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
     [testObject.language isEqualToString:@"English"] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
-    [testObject.key isEqualToString:@"PARKING_RULE_PARKING_VERDICT_ALLOWED"] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
-    [testObject.value isEqualToString:@"Parking allowed"] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
+    [testObject.key isEqualToString:localizedStringDictionary[@"key"]] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
+    [testObject.value isEqualToString:localizedStringDictionary[@"value"]] ? XCTAssert(YES, @"Pass") : XCTAssert(NO, @"Pass");
 
 }
 
