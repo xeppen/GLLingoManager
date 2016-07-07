@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		09B37C1BD145D478A6F5AC5D /* libPods-GetLingoSampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB894C3DC14241D26036AA0E /* libPods-GetLingoSampleApp.a */; };
+		3A2A3B511D15F87200B2E2D4 /* sampleFetchTranslations.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A3B501D15F87200B2E2D4 /* sampleFetchTranslations.json */; };
+		3A2A3B531D15F89500B2E2D4 /* sampleFetchTranslationsNoNewUpdates.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A3B521D15F89500B2E2D4 /* sampleFetchTranslationsNoNewUpdates.json */; };
+		3A2A3B551D19C8DC00B2E2D4 /* sampleFetchWrongLangCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A3B541D19C8DC00B2E2D4 /* sampleFetchWrongLangCode.json */; };
+		3A2A3B571D19C9F500B2E2D4 /* sampleFetchWrongLangCodeAndFromDate.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A3B561D19C9F500B2E2D4 /* sampleFetchWrongLangCodeAndFromDate.json */; };
 		3A2BA57E1C97590F00F4FDB5 /* GLLingoManager_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2BA57D1C97590F00F4FDB5 /* GLLingoManager_Tests.m */; };
 		3A8A86141CEE64CA00D27405 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A8A86161CEE64CA00D27405 /* Localizable.strings */; };
 		3A9DC86B1CD24859006988B3 /* GLStringObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9DC86A1CD24859006988B3 /* GLStringObjectTests.m */; };
-		3AD13EA81CB05D8000822D15 /* sampleFetchTranslationsSV.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD13EA71CB05D8000822D15 /* sampleFetchTranslationsSV.json */; };
 		3AE191941C72831F001DEA8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191931C72831F001DEA8E /* main.m */; };
 		3AE191971C72831F001DEA8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191961C72831F001DEA8E /* AppDelegate.m */; };
 		3AE1919A1C72831F001DEA8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191991C72831F001DEA8E /* ViewController.m */; };
@@ -23,7 +26,6 @@
 		3AE191BD1C7286A3001DEA8E /* GLNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191BC1C7286A3001DEA8E /* GLNetworkService.m */; };
 		3AE191C11C72875D001DEA8E /* GLLingoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191C01C72875D001DEA8E /* GLLingoManager.m */; };
 		3AE191C31C729069001DEA8E /* GLNetworkService_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191C21C729069001DEA8E /* GLNetworkService_Tests.m */; };
-		3AE191C81C729220001DEA8E /* sampleFetchOfStrings.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE191C71C729220001DEA8E /* sampleFetchOfStrings.json */; };
 		3AE191CC1C731D53001DEA8E /* GLStringObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE191CB1C731D53001DEA8E /* GLStringObject.m */; };
 		C0A962805B1F3B663BC865B4 /* libPods-GetLingoSampleAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D16B1C41778956613DC94B /* libPods-GetLingoSampleAppTests.a */; };
 /* End PBXBuildFile section */
@@ -39,12 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A2A3B501D15F87200B2E2D4 /* sampleFetchTranslations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFetchTranslations.json; sourceTree = "<group>"; };
+		3A2A3B521D15F89500B2E2D4 /* sampleFetchTranslationsNoNewUpdates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFetchTranslationsNoNewUpdates.json; sourceTree = "<group>"; };
+		3A2A3B541D19C8DC00B2E2D4 /* sampleFetchWrongLangCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFetchWrongLangCode.json; sourceTree = "<group>"; };
+		3A2A3B561D19C9F500B2E2D4 /* sampleFetchWrongLangCodeAndFromDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFetchWrongLangCodeAndFromDate.json; sourceTree = "<group>"; };
 		3A2BA57D1C97590F00F4FDB5 /* GLLingoManager_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLingoManager_Tests.m; sourceTree = "<group>"; };
 		3A8A86151CEE64CA00D27405 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A8A86171CEE64D100D27405 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A8A86181CEE69AF00D27405 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A9DC86A1CD24859006988B3 /* GLStringObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLStringObjectTests.m; sourceTree = "<group>"; };
-		3AD13EA71CB05D8000822D15 /* sampleFetchTranslationsSV.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFetchTranslationsSV.json; sourceTree = "<group>"; };
 		3AE1918F1C72831F001DEA8E /* GetLingoSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetLingoSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE191931C72831F001DEA8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3AE191951C72831F001DEA8E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,7 +70,6 @@
 		3AE191C01C72875D001DEA8E /* GLLingoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLingoManager.m; sourceTree = "<group>"; };
 		3AE191C21C729069001DEA8E /* GLNetworkService_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLNetworkService_Tests.m; sourceTree = "<group>"; };
 		3AE191C41C7291EA001DEA8E /* GetLingoSampleApp.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLingoSampleApp.pch; sourceTree = "<group>"; };
-		3AE191C71C729220001DEA8E /* sampleFetchOfStrings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleFetchOfStrings.json; sourceTree = "<group>"; };
 		3AE191CA1C731D53001DEA8E /* GLStringObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLStringObject.h; sourceTree = "<group>"; };
 		3AE191CB1C731D53001DEA8E /* GLStringObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLStringObject.m; sourceTree = "<group>"; };
 		4B1F2611CF784C725B56E52F /* Pods-GetLingoSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetLingoSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetLingoSampleApp/Pods-GetLingoSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,8 +200,10 @@
 		3AE191C61C72920A001DEA8E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3AE191C71C729220001DEA8E /* sampleFetchOfStrings.json */,
-				3AD13EA71CB05D8000822D15 /* sampleFetchTranslationsSV.json */,
+				3A2A3B501D15F87200B2E2D4 /* sampleFetchTranslations.json */,
+				3A2A3B521D15F89500B2E2D4 /* sampleFetchTranslationsNoNewUpdates.json */,
+				3A2A3B541D19C8DC00B2E2D4 /* sampleFetchWrongLangCode.json */,
+				3A2A3B561D19C9F500B2E2D4 /* sampleFetchWrongLangCodeAndFromDate.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -329,8 +335,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE191C81C729220001DEA8E /* sampleFetchOfStrings.json in Resources */,
-				3AD13EA81CB05D8000822D15 /* sampleFetchTranslationsSV.json in Resources */,
+				3A2A3B551D19C8DC00B2E2D4 /* sampleFetchWrongLangCode.json in Resources */,
+				3A2A3B511D15F87200B2E2D4 /* sampleFetchTranslations.json in Resources */,
+				3A2A3B571D19C9F500B2E2D4 /* sampleFetchWrongLangCodeAndFromDate.json in Resources */,
+				3A2A3B531D15F89500B2E2D4 /* sampleFetchTranslationsNoNewUpdates.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

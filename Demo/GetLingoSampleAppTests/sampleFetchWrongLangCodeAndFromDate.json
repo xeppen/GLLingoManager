@@ -1,0 +1,12 @@
+{
+    "errors": [
+               {
+               "status": 422,
+               "detail": "Invalid language code. Could not find language."
+               },
+               {
+               "status": 422,
+               "detail": "Invalid from_date parameter, must be a Unix timestamp."
+               }
+               ]
+}

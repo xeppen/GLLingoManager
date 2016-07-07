@@ -1,0 +1,49 @@
+{
+    "data": [
+             {
+             "id": 73,
+             "value": "December, 2015",
+             "language": {
+                 "id": 4,
+                 "name": "English",
+                 "language_code": "en"
+             },
+             "localized_string": {
+                 "id": 81,
+                 "key": "SAMPLE_APP_DATE",
+                 "value": "December, 2015"
+                 }
+             },
+             {
+             "id": 74,
+             "value": "%i deeds completed",
+             "language": {
+             "id": 4,
+             "name": "English",
+             "language_code": "en"
+             },
+             "localized_string": {
+             "id": 82,
+             "key": "SAMPLE_APP_DEEDS",
+             "value": "%i deeds completed"
+             }
+             },
+             {
+             "id": 75,
+             "value": "You're on course to reach your goal for this month.",
+             "language": {
+             "id": 4,
+             "name": "English",
+             "language_code": "en"
+             },
+             "localized_string": {
+             "id": 83,
+             "key": "SAMPLE_APP_REACH_GOLD",
+             "value": "You're on course to reach your goal for this month."
+             }
+             }
+             ],
+    "meta": {
+        "status": 1
+    }
+}
