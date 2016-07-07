@@ -10,8 +10,6 @@
 
 @interface GLNetworkService : NSObject
 
-+ (void) fetchStringsForAppKey:(NSString *)apiKey withAppId:(NSString *)appId withCompletion:(void (^)(NSDictionary *stringDictionary, NSError *error))completion;
-
 + (void) fetchStringsForLanguageCode:(NSString *)langCode withAppKey:(NSString *)apiKey withAppId:(NSString *)appId withCompletion:(void (^)(NSDictionary *stringDictionary, NSError *error))completion;
 
 @end
