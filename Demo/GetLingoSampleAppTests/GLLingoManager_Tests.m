@@ -26,8 +26,8 @@
 }
 
 - (void)testPersistAndFetchLanguageCodeArray {
-    NSArray *testArray = @[@"sv", @"en-US", @"de", @"fr"];
-    GLLingoManager *testManager = [GLLingoManager sharedManager];
+//    NSArray *testArray = @[@"sv", @"en-US", @"de", @"fr"];
+//    GLLingoManager *testManager = [GLLingoManager sharedManager];
     
     
 }
