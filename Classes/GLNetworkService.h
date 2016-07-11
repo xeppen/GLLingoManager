@@ -12,4 +12,7 @@
 
 + (void) fetchStringsForLanguageCode:(NSString *)langCode withAppKey:(NSString *)apiKey withAppId:(NSString *)appId withCompletion:(void (^)(NSDictionary *stringDictionary, NSError *error))completion;
 
+#define GLErrorCode_WrongLang 3
+#define GLErrorCode_WrongStatusCode 4
+#define GLErrorCode_DataNotArray 5
 @end

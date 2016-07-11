@@ -25,7 +25,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
     
     self.key = [NSString stringWithFormat:@"%@", dictionary[@"localized_string"][@"key"]] ?  : @"";
-    self.value = [NSString stringWithFormat:@"%@", dictionary[@"value"]] ? : @"";
+    self.value = [NSString stringWithFormat:@"%@", dictionary[@"localized_string"][@"value"]] ? : @"";
     self.id = dictionary[@"id"] ? : @0;
     self.createdAt = [NSString stringWithFormat:@"%@", dictionary[@"created_at"]] ? [dateFormatter dateFromString:[NSString stringWithFormat:@"%@", dictionary[@"created_at"]]] : nil;
     self.updatedAt = [NSString stringWithFormat:@"%@", dictionary[@"updated_at"]] ? [dateFormatter dateFromString:[NSString stringWithFormat:@"%@", dictionary[@"updated_at"]]] : nil;
@@ -35,15 +35,10 @@
 
 - (NSString *)description
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
     
     NSDictionary *dict = @{
                            @"key": self.key ? : @"",
                            @"value": self.value ? : @"",
-                           @"id" : [NSString stringWithFormat:@"%li",(long)self.id ? : 0],
-                           @"created_at": [formatter stringFromDate:self.createdAt],
-                           @"updated_at": [formatter stringFromDate:self.updatedAt],
                            @"language": self.language ? : @"",
                            @"languageCode": self.languageCode ? : @""
                            };
