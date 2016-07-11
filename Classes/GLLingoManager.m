@@ -116,7 +116,7 @@
             [GLNetworkService fetchStringsForLanguageCode:self.preferedLanguageCode withAppKey:self.apiKey withAppId:self.appId withCompletion:^(NSDictionary *stringDictionary, NSError *error) {
                 if(error)
                 {
-                    #warning Handle error
+                    // TODO: Handle error
                     NSLog(@"Wops.. error: %@", error.localizedDescription);
                     return;
                 }
