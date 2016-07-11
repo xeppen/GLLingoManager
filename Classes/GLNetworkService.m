@@ -83,8 +83,6 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
             return;
         }
         
-#warning Needs to be improved
-        
         // Save timestamp
         [prefs setObject:[NSDate date] forKey:timestampLastFetchKey];
         NSLog(@"Saved timestamp %@", [NSDate date]);
