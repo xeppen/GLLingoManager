@@ -11,73 +11,27 @@
 
 @implementation GLNetworkService
 
-NSString *getLingoApiBasicUrl = @"https://getlingo.herokuapp.com/api/apps";
-NSString *getLingoApiTranslationsUrl = @"http://www.getlingo.io/api/apps/";
+NSString *getLingoApiTranslationsUrl = @"http://www.getlingo.io/api/apps";
+NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
 
 /**
- *  API Path : https://getlingo.herokuapp.com/api/apps/
+ *  API Path : http://www.getlingo.io/api/apps
  *  Params : [
  *               "Authorization"  - the app key
  *           ]
  */
-+ (void) fetchStringsForAppKey:(NSString *)apiKey withAppId:(NSString *)appId withCompletion:(void (^)(NSDictionary *stringDictionary, NSError *error))completion
-{
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@", getLingoApiBasicUrl, appId]; //TODO
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSLog(@"Get Lingo translation url: %@", url);
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    [request setHTTPMethod:@"GET"];
-    
-    //TODO: Maybe use a specifically configured session for Login operations with its own neat setup methods encapsulated somewhere?
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    [sessionConfiguration setHTTPAdditionalHeaders:@{
-                                              @"Authorization": apiKey
-                                              }
-     ];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler: ^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(nil, error);
-            });
-            return;
-        }
-        
-        NSError *jsonError;
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-        
-        if(error || jsonError)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(nil, error ? : jsonError);
-            });
-            return;
-        }
-        
-        NSArray *arrayOfStringObjects = json[@"app"][@"localized_strings"];
-        
-        NSMutableDictionary *dicOfStrings = [[NSMutableDictionary alloc] init];
-        for(NSDictionary *dic in arrayOfStringObjects){
-            GLStringObject *newString = [[GLStringObject alloc] initWithDictionary:dic];
-            [dicOfStrings setValue:newString forKey:newString.key];
-        }
-        NSDictionary *returnDictionary = [[NSDictionary alloc] initWithDictionary:dicOfStrings];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            completion(returnDictionary, nil);
-        });
-        
-    }];
-    [task resume];
-
-}
 
 + (void) fetchStringsForLanguageCode:(NSString *)langCode withAppKey:(NSString *)apiKey withAppId:(NSString *)appId withCompletion:(void (^)(NSDictionary *stringDictionary, NSError *error))completion
-{   
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/translations?%@%@", getLingoApiTranslationsUrl, appId, @"language_code=", langCode]];
+{
+    // Get last timestamp a fetch was made
+    __block NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSInteger timestampInSeconds = 0;
+    if([[[prefs dictionaryRepresentation] allKeys] containsObject:timestampLastFetchKey]){
+        NSDate *timestampLastFetch = [prefs objectForKey:timestampLastFetchKey];
+        timestampInSeconds = [timestampLastFetch timeIntervalSince1970];
+    }
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/translations?%@%@&from_date=%li", getLingoApiTranslationsUrl, appId, @"language_code=", langCode, (long)timestampInSeconds]];
     NSLog(@"Get Lingo url: %@", url);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
@@ -101,7 +55,8 @@ NSString *getLingoApiTranslationsUrl = @"http://www.getlingo.io/api/apps/";
         }
         
         NSError *jsonError;
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+//        NSArray *arrayOfStringObjects  = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+        NSDictionary *jsonData  = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
         
         if(error || jsonError)
         {
@@ -111,19 +66,65 @@ NSString *getLingoApiTranslationsUrl = @"http://www.getlingo.io/api/apps/";
             return;
         }
         
-        NSArray *arrayOfStringObjects = json[@"translations"];
-        
-        NSMutableDictionary *dicOfStrings = [[NSMutableDictionary alloc] init];
-        for(NSDictionary *dic in arrayOfStringObjects){
-            GLStringObject *newString = [[GLStringObject alloc] initWithDictionary:dic];
-            
-            [dicOfStrings setValue:newString forKey:newString.key];
+        // Check for errors
+        if([jsonData[@"errors"] isKindOfClass:[NSArray class]])
+        {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                completion(nil, [NSError errorWithDomain:@"io.getlingo" code:GLErrorCode_WrongLang userInfo:[NSDictionary dictionaryWithObject:@"Wrong data type received from server" forKey:NSLocalizedDescriptionKey]]);
+            });
+            return;
         }
-        NSDictionary *returnDictionary = [[NSDictionary alloc] initWithDictionary:dicOfStrings];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            completion(returnDictionary, nil);
-        });
         
+        if(![jsonData[@"data"] isKindOfClass:[NSArray class]])
+        {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                completion(nil, [NSError errorWithDomain:@"io.getlingo" code:GLErrorCode_DataNotArray userInfo:[NSDictionary dictionaryWithObject:@"Wrong data type received from server" forKey:NSLocalizedDescriptionKey]]);
+            });
+            return;
+        }
+        
+#warning Needs to be improved
+        
+        // Save timestamp
+        [prefs setObject:[NSDate date] forKey:timestampLastFetchKey];
+        NSLog(@"Saved timestamp %@", [NSDate date]);
+        
+        // Check meta
+        NSNumber *status = jsonData[@"meta"][@"status"];
+        
+        if(![status isEqualToNumber:@1] && ![status isEqualToNumber:@2])
+        {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                completion(nil, [NSError errorWithDomain:@"io.getlingo" code:GLErrorCode_WrongStatusCode userInfo:[NSDictionary dictionaryWithObject:@"Wrong status code recieved from server" forKey:NSLocalizedDescriptionKey]]);
+            });
+            return;
+        }
+        
+        // Updated version is avaliable
+        if ([status isEqualToNumber:@1])
+        {
+            NSArray *arrayOfDictionaries = jsonData[@"data"];
+            NSMutableDictionary *dicOfStringObjects = [[NSMutableDictionary alloc] init];
+            for(NSDictionary *dic in arrayOfDictionaries){
+                GLStringObject *newString = [[GLStringObject alloc] initWithDictionary:dic];
+                NSLog(@"Value: %@ forKey: %@", newString.value, newString.key);
+                [dicOfStringObjects setValue:newString forKey:newString.key];
+            }
+            NSDictionary *returnDictionary = [[NSDictionary alloc] initWithDictionary:dicOfStringObjects];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                completion(returnDictionary, nil);
+            });
+            return;
+        }
+        
+        // No new data available, returning empty dictionary
+        if ([status isEqualToNumber:@2])
+        {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                completion(@{}, nil);
+            });
+            return;
+        }
     }];
     [task resume];
 

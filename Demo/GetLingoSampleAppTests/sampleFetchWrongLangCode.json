@@ -1,0 +1,8 @@
+{
+    "errors": [
+               {
+               "status": 422,
+               "detail": "Invalid language code. Could not find language."
+               }
+               ]
+}

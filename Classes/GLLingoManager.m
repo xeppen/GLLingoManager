@@ -116,14 +116,19 @@
             [GLNetworkService fetchStringsForLanguageCode:self.preferedLanguageCode withAppKey:self.apiKey withAppId:self.appId withCompletion:^(NSDictionary *stringDictionary, NSError *error) {
                 if(error)
                 {
-                    //TODO
+                    #warning Handle error
                     NSLog(@"Wops.. error: %@", error.localizedDescription);
                     return;
                 }
                 
-                self.stringDictionary = stringDictionary;
-                if(completion)
-                    completion(stringDictionary);
+                // If new data is avaliable.
+                if(stringDictionary.count > 0)
+                {
+                    self.stringDictionary = stringDictionary;
+                    if(completion)
+                        completion(stringDictionary);
+                }
+                
             }];
         } else {
             // Use device language
