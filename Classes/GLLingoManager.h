@@ -16,6 +16,7 @@
 
 -(void) fetch;
 
+-(void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId;
 -(void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId andPreferedLanguage:(NSString *) languageCode;
 
 // Macro

@@ -81,6 +81,12 @@
     }];
 }
 
+- (void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId
+{
+    [self setApiKey:apiKey andAppId:appId andPreferedLanguage:@""];
+}
+
+
 -(void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId andPreferedLanguage:(NSString *) languageCode
 {
     if(apiKey.length != 0)
