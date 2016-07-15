@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) NSString *value;
-@property (nonatomic, strong) NSNumber *id;
+@property (nonatomic, strong) NSNumber *stringId;
 @property (nonatomic, strong) NSDictionary *dictionary;
 @property (nonatomic, strong) NSString *language;
 @property (nonatomic, strong) NSString *languageCode;

@@ -25,7 +25,6 @@
 
 @implementation GLLingoManager
 
-@synthesize stringDictionary = _stringDictionary;
 
 + (instancetype)sharedManager
 {
@@ -54,64 +53,70 @@
 
 -(NSString *) getLocalizedStringForKey: (NSString *)key withDefault: (NSString *)defaultString
 {
+
     GLStringObject *translationObject = [self.stringDictionary objectForKey:key];
-    if(translationObject.value)
+    if(translationObject.value.length != 0)
     {
         return translationObject.value;
     }
-    
+
     NSString *returnString = NSLocalizedString(key, nil);
     if(![returnString isEqualToString:key])
         return returnString;
-    
+
     if(defaultString)
         return defaultString;
     return @"";
+
 }
 
 -(void) fetch
 {
     [self fetchDataWithCompletion:^(NSDictionary *stringDictionary){
-        self.stringDictionary = stringDictionary;
-        [self persistDictionary:stringDictionary forLanguageCode:[self languageCode]];
-        NSLog(@"New data has been fetched!");
+        if (stringDictionary.count != 0) {
+            self.stringDictionary = stringDictionary;
+            [self persistDictionary:stringDictionary forLanguageCode:[self languageCode]];
+            NSLog(@"New data has been fetched!");
+        };
     }];
 }
 
 -(void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId andPreferedLanguage:(NSString *) languageCode
 {
-    if(apiKey)
+    if(apiKey.length != 0)
     {
         self.apiKey = apiKey;
     }
-    if(appId)
+    if(appId.length != 0)
     {
         self.appId = appId;
     }
-    if(languageCode)
+    if(languageCode.length != 0)
     {
         self.preferedLanguageCode = languageCode;
     }
-    
-    if(apiKey && appId)
+
+    if(apiKey.length != 0 && appId.length != 0)
     {
         [self fetchDictionaryOfStrings];
         [self fetch];
     }
-    
 }
 
 #pragma mark - Private actions
 -(void) fetchDictionaryOfStrings
 {
-    self.stringDictionary = [self persistedDictionary];
+    NSDictionary *persisted_dictionary = [self persistedDictionary];
+    if (persisted_dictionary.count != 0) {
+        self.stringDictionary = [self persistedDictionary];
+    }
 }
 
 -(void) fetchDataWithCompletion:(void(^)(NSDictionary *stringDictionary)) completion
 {
     if(self.apiKey)
     {
-        if(self.preferedLanguageCode)
+        if(self.preferedLanguageCode.length != 0)
         {
             [GLNetworkService fetchStringsForLanguageCode:self.preferedLanguageCode withAppKey:self.apiKey withAppId:self.appId withCompletion:^(NSDictionary *stringDictionary, NSError *error) {
                 if(error)
@@ -120,7 +125,7 @@
                     NSLog(@"Wops.. error: %@", error.localizedDescription);
                     return;
                 }
-                
+
                 // If new data is avaliable.
                 if(stringDictionary.count > 0)
                 {
@@ -128,12 +133,12 @@
                     if(completion)
                         completion(stringDictionary);
                 }
-                
+
             }];
         } else {
             // Use device language
             NSString *languageCode = [self deviceLanguageCode];
-            
+
             [GLNetworkService fetchStringsForLanguageCode:languageCode withAppKey:self.apiKey withAppId:self.appId withCompletion:^(NSDictionary *stringDictionary, NSError *error) {
                 if(error)
                 {
@@ -141,7 +146,7 @@
                     NSLog(@"Wops.. error: %@", error.localizedDescription);
                     return;
                 }
-                
+
                 self.stringDictionary = stringDictionary;
                 if(completion)
                     completion(stringDictionary);
@@ -155,7 +160,7 @@
 -(NSDictionary *)persistedDictionary
 {
     NSString *persistedDictionaryLanguageKey = @"";
-    if(self.preferedLanguageCode){
+    if(self.preferedLanguageCode.length != 0){
         persistedDictionaryLanguageKey = [NSString stringWithFormat:@"%@_%@", PERSISTED_DICTIONARY_KEY, self.preferedLanguageCode];
     } else {
         persistedDictionaryLanguageKey = [NSString stringWithFormat:@"%@_%@", PERSISTED_DICTIONARY_KEY, [self deviceLanguageCode]];
@@ -168,15 +173,17 @@
 
 -(void)persistDictionary:(NSDictionary *)dictionary forLanguageCode:(NSString *) langCode
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSString *persistedDictionaryLanguageKey = [NSString stringWithFormat:@"%@_%@", PERSISTED_DICTIONARY_KEY, langCode];
-    
-    if (!dictionary)
+    if (dictionary.count == 0)
     {
-        [defaults removeObjectForKey:persistedDictionaryLanguageKey];
+        //[defaults removeObjectForKey:persistedDictionaryLanguageKey]; // Why?
         return;
     }
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *persistedDictionaryLanguageKey = [NSString stringWithFormat:@"%@_%@", PERSISTED_DICTIONARY_KEY, langCode];
+
+
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
     [defaults setObject:encodedObject forKey:persistedDictionaryLanguageKey];
     [defaults synchronize];
@@ -187,13 +194,13 @@
     NSString *language = [[NSLocale preferredLanguages] firstObject];
     NSArray *stringParts = [language componentsSeparatedByString:@"-"];
     NSString *languageCode = [stringParts firstObject];
-    //NSString *region = stringParts.count > 1 ? [stringParts lastObject] : @"";
+    //NSString *region = stringParts.count > 1 ? [stringParts lastObject] : @""; // Remove?
     return languageCode;
 }
 
 -(NSString *)languageCode {
     __block NSString *currentLanguageCode = [[NSString alloc] init];
-    if (self.preferedLanguageCode) {
+    if (self.preferedLanguageCode.length != 0) {
         currentLanguageCode = self.preferedLanguageCode;
     } else {
         currentLanguageCode = [self deviceLanguageCode];
