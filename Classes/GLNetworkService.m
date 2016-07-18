@@ -15,7 +15,7 @@ NSString *getLingoApiTranslationsUrl = @"https://www.getlingo.io/api/apps";
 NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
 
 /**
- *  API Path : https://www.getlingo.io/api/apps
+ *  API Path : http://www.getlingo.io/api/apps
  *  Params : [
  *               "Authorization"  - the app key
  *           ]
@@ -30,13 +30,13 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
         NSDate *timestampLastFetch = [prefs objectForKey:timestampLastFetchKey];
         timestampInSeconds = [timestampLastFetch timeIntervalSince1970];
     }
-
+    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/translations?%@%@&from_date=%li", getLingoApiTranslationsUrl, appId, @"language_code=", langCode, (long)timestampInSeconds]];
     NSLog(@"Get Lingo url: %@", url);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-
+    
     [request setHTTPMethod:@"GET"];
-
+    
     //TODO: Maybe use a specifically configured session for Login operations with its own neat setup methods encapsulated somewhere?
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     [sessionConfiguration setHTTPAdditionalHeaders:@{
@@ -44,7 +44,7 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
                                                      }
      ];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-
+    
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler: ^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error)
         {
@@ -53,13 +53,19 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
             });
             return;
         }
-
+        
         NSError *jsonError;
 //        NSArray *arrayOfStringObjects  = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
         NSDictionary *jsonData  = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-
-
-
+        
+        if(error || jsonError)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, error ? : jsonError);
+            });
+            return;
+        }
+        
         // Check for errors
         if([jsonData[@"errors"] isKindOfClass:[NSArray class]])
         {
@@ -68,7 +74,7 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
             });
             return;
         }
-
+        
         if(![jsonData[@"data"] isKindOfClass:[NSArray class]])
         {
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -76,14 +82,14 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
             });
             return;
         }
-
+        
         // Save timestamp
         [prefs setObject:[NSDate date] forKey:timestampLastFetchKey];
         NSLog(@"Saved timestamp %@", [NSDate date]);
-
+        
         // Check meta
         NSNumber *status = jsonData[@"meta"][@"status"];
-
+        
         if(![status isEqualToNumber:@1] && ![status isEqualToNumber:@2])
         {
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -91,7 +97,7 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
             });
             return;
         }
-
+        
         // Updated version is avaliable
         if ([status isEqualToNumber:@1])
         {
@@ -108,7 +114,7 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
             });
             return;
         }
-
+        
         // No new data available, returning empty dictionary
         if ([status isEqualToNumber:@2])
         {
