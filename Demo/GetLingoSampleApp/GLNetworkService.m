@@ -11,7 +11,7 @@
 
 @implementation GLNetworkService
 
-NSString *getLingoApiTranslationsUrl = @"http://www.getlingo.io/api/apps";
+NSString *getLingoApiTranslationsUrl = @"https://www.getlingo.io/api/apps";
 NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
 
 /**
