@@ -76,7 +76,6 @@
         if (stringDictionary.count != 0) {
             self.stringDictionary = stringDictionary;
             [self persistDictionary:stringDictionary forLanguageCode:[self languageCode]];
-            NSLog(@"New data has been fetched!");
         };
     }];
 }
@@ -128,7 +127,6 @@
                 if(error)
                 {
                     // TODO: Handle error
-                    NSLog(@"Wops.. error: %@", error.localizedDescription);
                     return;
                 }
 
@@ -149,7 +147,6 @@
                 if(error)
                 {
                     //TODO
-                    NSLog(@"Wops.. error: %@", error.localizedDescription);
                     return;
                 }
 
@@ -159,7 +156,6 @@
             }];
         }
     } else {
-        NSLog(@"No apiKey set!");
     }
 }
 
@@ -173,21 +169,24 @@
     }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:persistedDictionaryLanguageKey];
-    NSDictionary *dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    NSDictionary *dictionary = [[NSDictionary alloc] init];
+    if (encodedObject) {
+        dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    }
     return dictionary;
 }
 
 -(void)persistDictionary:(NSDictionary *)dictionary forLanguageCode:(NSString *) langCode
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *persistedDictionaryLanguageKey = [NSString stringWithFormat:@"%@_%@", PERSISTED_DICTIONARY_KEY, langCode];
+
+
     if (dictionary.count == 0)
     {
-        //[defaults removeObjectForKey:persistedDictionaryLanguageKey]; // Why?
+        [defaults removeObjectForKey:persistedDictionaryLanguageKey];
         return;
     }
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    NSString *persistedDictionaryLanguageKey = [NSString stringWithFormat:@"%@_%@", PERSISTED_DICTIONARY_KEY, langCode];
 
 
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
@@ -200,7 +199,6 @@
     NSString *language = [[NSLocale preferredLanguages] firstObject];
     NSArray *stringParts = [language componentsSeparatedByString:@"-"];
     NSString *languageCode = [stringParts firstObject];
-    //NSString *region = stringParts.count > 1 ? [stringParts lastObject] : @""; // Remove?
     return languageCode;
 }
 

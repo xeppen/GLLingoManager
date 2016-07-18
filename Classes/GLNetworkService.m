@@ -32,7 +32,6 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
     }
 
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/translations?%@%@&from_date=%li", getLingoApiTranslationsUrl, appId, @"language_code=", langCode, (long)timestampInSeconds]];
-    NSLog(@"Get Lingo url: %@", url);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 
     [request setHTTPMethod:@"GET"];
@@ -55,7 +54,6 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
         }
 
         NSError *jsonError;
-//        NSArray *arrayOfStringObjects  = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
         NSDictionary *jsonData  = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
 
 
@@ -79,7 +77,6 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
 
         // Save timestamp
         [prefs setObject:[NSDate date] forKey:timestampLastFetchKey];
-        NSLog(@"Saved timestamp %@", [NSDate date]);
 
         // Check meta
         NSNumber *status = jsonData[@"meta"][@"status"];
@@ -99,7 +96,6 @@ NSString *timestampLastFetchKey = @"GL_LAST_FETCH_KEY";
             NSMutableDictionary *dicOfStringObjects = [[NSMutableDictionary alloc] init];
             for(NSDictionary *dic in arrayOfDictionaries){
                 GLStringObject *newString = [[GLStringObject alloc] initWithDictionary:dic];
-                NSLog(@"Value: %@ forKey: %@", newString.value, newString.key);
                 [dicOfStringObjects setValue:newString forKey:newString.key];
             }
             NSDictionary *returnDictionary = [[NSDictionary alloc] initWithDictionary:dicOfStringObjects];

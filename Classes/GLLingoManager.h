@@ -17,7 +17,7 @@
 -(void) fetch;
 
 -(void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId;
--(void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId andPreferedLanguage:(NSString *) languageCode;
+-(void)setApiKey:(NSString *)apiKey andAppId:(NSString *)appId andPreferedLanguage:(NSString *)languageCode;
 
 // Macro
 #define GLLocalizedString(key, default) [[GLLingoManager sharedManager] getLocalizedStringForKey:key withDefault:default]
