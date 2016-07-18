@@ -23,19 +23,17 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
-    
+
     self.key = [NSString stringWithFormat:@"%@", dictionary[@"localized_string"][@"key"]] ?  : @"";
-    self.value = [NSString stringWithFormat:@"%@", dictionary[@"localized_string"][@"value"]] ? : @"";
-    self.id = dictionary[@"id"] ? : @0;
-    self.createdAt = [NSString stringWithFormat:@"%@", dictionary[@"created_at"]] ? [dateFormatter dateFromString:[NSString stringWithFormat:@"%@", dictionary[@"created_at"]]] : nil;
-    self.updatedAt = [NSString stringWithFormat:@"%@", dictionary[@"updated_at"]] ? [dateFormatter dateFromString:[NSString stringWithFormat:@"%@", dictionary[@"updated_at"]]] : nil;
+    self.value = [NSString stringWithFormat:@"%@", dictionary[@"value"]] ? : @"";
+    self.stringId = dictionary[@"id"] ? : @0;
     self.language = dictionary[@"language"][@"name"] ? : @"";
     self.languageCode = dictionary[@"language"][@"language_code"] ? : @"";
 }
 
 - (NSString *)description
 {
-    
+
     NSDictionary *dict = @{
                            @"key": self.key ? : @"",
                            @"value": self.value ? : @"",
@@ -55,9 +53,7 @@
         //Set dictionary first so that it does not trigger a reset of all the fields
         self.key = [aDecoder decodeObjectForKey:@"key"];
         self.value = [aDecoder decodeObjectForKey:@"value"];
-        self.id = [aDecoder decodeObjectForKey:@"id"];
-        self.createdAt = [aDecoder decodeObjectForKey:@"createdAt"];
-        self.updatedAt = [aDecoder decodeObjectForKey:@"updatedAt"];
+        self.stringId = [aDecoder decodeObjectForKey:@"id"];
         self.language = [aDecoder decodeObjectForKey:@"language"];
         self.languageCode= [aDecoder decodeObjectForKey:@"languageCode"];
     }
@@ -68,9 +64,7 @@
 {
     [aCoder encodeObject:self.key forKey:@"key"];
     [aCoder encodeObject:self.value forKey:@"value"];
-    [aCoder encodeObject:self.id forKey:@"id"];
-    [aCoder encodeObject:self.createdAt forKey:@"createdAt"];
-    [aCoder encodeObject:self.updatedAt forKey:@"updatedAt"];
+    [aCoder encodeObject:self.stringId forKey:@"id"];
     [aCoder encodeObject:self.language forKey:@"language"];
     [aCoder encodeObject:self.languageCode forKey:@"languageCode"];
 }
